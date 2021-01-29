@@ -47,5 +47,6 @@ class Role
         if ($role == 'marketing' && auth()->user()->role != 7) {
             abort(code: 403);
         }
+        return $next($request);
     }
 }
