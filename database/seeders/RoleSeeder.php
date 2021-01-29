@@ -16,13 +16,41 @@ class RoleSeeder extends Seeder
     {
         $data =  Role::create(
             ['name' => 'Admin'],
-            ['name' => 'Supervisor'],
+        );
+        $data->save();
+
+        $data =  Role::create(
             ['name' => 'Keuangan'],
+        );
+        $data->save();
+
+        $data =  Role::create(
+            ['name' => 'Supervisor'],
+        );
+        $data->save();
+
+        $data =  Role::create(
             ['name' => 'Accounting'],
+        );
+        $data->save();
+
+        $data =  Role::create(
             ['name' => 'Kasir'],
+        );
+        $data->save();
+
+        $data =  Role::create(
             ['name' => 'Gudang'],
+        );
+        $data->save();
+
+        $data =  Role::create(
             ['name' => 'Produksi'],
-            ['name' => 'Marketing']
+        );
+        $data->save();
+
+        $data =  Role::create(
+            ['name' => 'Marketing'],
         );
         $data->save();
     }

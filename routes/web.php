@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,19 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('/', 'UserController@index')->name('index')->middleware('auth', 'role:1|2|3|4');
-    Route::get('/create', 'UserController@create')->name('create')->middleware('auth', 'role:1|2|3|4');
-    Route::post('/store', 'UserController@store')->name('store')->middleware('auth', 'role:1|2|3|4');
-    Route::post('/edit', 'UserController@findAndChange')->name('findAndChange')->middleware('auth', 'role:1|2|3|4');
-    Route::get('/edit/{id}', 'UserController@edit')->name('edit')->middleware('auth', 'role:1|2|3|4');
-    Route::post('/update/{id}', 'UserController@update')->name('update')->middleware('auth', 'role:1|2|3|4');
-    Route::get('/suspand/{id}', 'UserController@suspand')->name('suspand')->middleware('auth', 'role:1|2|3|4');
-    Route::get('/delete/{id}', 'UserController@destroy')->name('delete')->middleware('auth', 'role:1|2|3|4');
+Route::group(['middleware' => ['auth']], function () {
+
+    //admin
+    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    });
+
+    //supervisor
+    Route::group(['middleware' => 'role:supervisor', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
+        Route::get('/', [SupervisorController::class, 'index'])->name('supervisor');
+    });
+
+    //keuangan
+    Route::group(['middleware' => 'role:keuangan', 'prefix' => 'keuangan', 'as' => 'keuangan.'], function () {
+        Route::get('/', [KeuanganController::class, 'index'])->name('keuangan');
+    });
 });
 
 
