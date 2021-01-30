@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\UsersController;
-use App\Models\Profil;
-
+use App\Http\Controllers\WereHouseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,34 +20,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/profil', [ProfilDashboard::class, 'index'])->name('profil');
     Route::patch('/profil', [ProfilDashboard::class, 'update'])->name('profil.update');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //admin
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('admin');
+    });
+
+    //supervisor
+    Route::group(['middleware' => 'role:supervisor,admin', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
+        Route::get('/', [SupervisorController::class, 'index'])->name('supervisor');
         Route::get('/add-user', [UsersController::class, 'index'])->name('add.user');
         Route::post('/add-user', [UsersController::class, 'store'])->name('store.user');
     });
 
-    //supervisor
-    Route::group(['middleware' => 'role:supervisor', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
-        Route::get('/', [SupervisorController::class, 'index'])->name('supervisor');
-    });
-
-    //keuangan
-    Route::group(['middleware' => 'role:keuangan', 'prefix' => 'keuangan', 'as' => 'keuangan.'], function () {
-        Route::get('/', [KeuanganController::class, 'index'])->name('keuangan');
+    //finance
+    Route::group(['middleware' => 'role:finance', 'prefix' => 'finance', 'as' => 'finance.'], function () {
+        Route::get('/', [FinanceController::class, 'index'])->name('finance');
     });
 
     //accounting
     Route::group(['middleware' => 'role:accounting', 'prefix' => 'accounting', 'as' => 'accounting.'], function () {
-        Route::get('/', [Controller::class, 'index'])->name('accounting');
+        Route::get('/', [AccountingController::class, 'index'])->name('accounting');
+    });
+
+    //Gudang
+    Route::group(['middleware' => 'role:accounting', 'prefix' => 'accounting', 'as' => 'gudang.'], function () {
+        Route::get('/', [WhereHouseController::class, 'index'])->name('accounting');
     });
 });
 

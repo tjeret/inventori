@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GudangController extends Controller
+class WereHouseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,7 @@ class GudangController extends Controller
      */
     public function index()
     {
+        //
     }
 
     /**
