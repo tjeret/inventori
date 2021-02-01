@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\WarehouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,11 @@ Route::group(['middleware' => ['auth']], function () {
     //accounting
     Route::group(['middleware' => 'role:accounting', 'prefix' => 'accounting', 'as' => 'accounting.'], function () {
         Route::get('/', [AccountingController::class, 'index'])->name('accounting');
+    });
+
+    //warehouse
+    Route::group(['middleware' => 'role:warehouse', 'prefix' => 'gudang', 'as' => 'warehouse.'], function () {
+        Route::get('/', [WarehouseController::class, 'index'])->name('warehouse');
     });
 });
 
