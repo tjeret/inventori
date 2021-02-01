@@ -50,7 +50,7 @@ class UserController extends Controller
             'role' => $request->role,
             'suspend' => 0,
         ]);
-
+        $user->save();
         $token = $user->createToken('user_token')->accessToken;
 
         return response()->json(['token' => $token], 200);
