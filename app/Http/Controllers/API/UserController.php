@@ -12,6 +12,11 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $data = User::all();
+        return response()->json(['data' => $data]);
+    }
 
     public $successStatus = 200;
 
