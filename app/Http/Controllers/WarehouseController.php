@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RawMaterial;
 use Illuminate\Http\Request;
 
-class GudangController extends Controller
+class WarehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class GudangController extends Controller
      */
     public function index()
     {
-        //
+        $material = RawMaterial::all();
+        dd($material);
     }
 
     /**
