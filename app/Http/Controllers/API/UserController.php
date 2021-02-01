@@ -50,6 +50,10 @@ class UserController extends Controller
             'role' => $request->role,
             'suspend' => 0,
         ]);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         $user->save();
         $token = $user->createToken('user_token')->accessToken;
 

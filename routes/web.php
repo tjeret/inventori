@@ -35,8 +35,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/profil', [ProfilController::class, 'update'])->name('profil.update');
     //admin
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/add-user', [UsersController::class, 'index'])->name('add.user');
-        Route::post('/add-user', [UsersController::class, 'store'])->name('store.user');
+        Route::get('/tambah-user', [UsersController::class, 'create'])->name('add.user');
+        Route::post('/tambah-user', [UsersController::class, 'store'])->name('store.user');
     });
 
     //supervisor
