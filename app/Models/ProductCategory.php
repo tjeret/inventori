@@ -13,4 +13,9 @@ class ProductCategory extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function profuct()
+    {
+        return $this->belongsTo(Product::class, 'category_id');
+    }
 }

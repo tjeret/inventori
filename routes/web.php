@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
-use App\Models\Profil;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SupervisorController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\AccountingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +23,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/profil', [ProfilDashboard::class, 'index'])->name('profil');
-    Route::patch('/profil', [ProfilDashboard::class, 'update'])->name('profil.update');
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    Route::patch('/profil', [ProfilController::class, 'update'])->name('profil.update');
     //admin
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('admin');
         Route::get('/add-user', [UsersController::class, 'index'])->name('add.user');
         Route::post('/add-user', [UsersController::class, 'store'])->name('store.user');
     });
@@ -47,7 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //accounting
     Route::group(['middleware' => 'role:accounting', 'prefix' => 'accounting', 'as' => 'accounting.'], function () {
-        Route::get('/', [Controller::class, 'index'])->name('accounting');
+        Route::get('/', [AccountingController::class, 'index'])->name('accounting');
     });
 });
 
