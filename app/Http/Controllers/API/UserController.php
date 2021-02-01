@@ -37,8 +37,8 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|min:3|unique:users',
-            'email' => 'required|email|unique:users',
+            'username' => 'required|min:3',
+            'email' => 'required|email',
             'password' => 'required|min:6',
             'role' => 'required',
         ]);
