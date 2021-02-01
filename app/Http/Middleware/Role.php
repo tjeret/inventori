@@ -20,11 +20,11 @@ class Role
             abort(code: 403);
         }
 
-        if ($role == 'supervisor' && auth()->user()->role != 1 & 0) {
+        if ($role == 'supervisor' && auth()->user()->role != 1) {
             abort(code: 403);
         }
 
-        if ($role == 'finance' && auth()->user()->role != 2) {
+        if ($role == 'keuangan' && auth()->user()->role != 2) {
             abort(code: 403);
         }
 
@@ -32,15 +32,15 @@ class Role
             abort(code: 403);
         }
 
-        if ($role == 'cashier' && auth()->user()->role != 4) {
+        if ($role == 'kasir' && auth()->user()->role != 4) {
             abort(code: 403);
         }
 
-        if ($role == 'warehouse' && auth()->user()->role != 5) {
+        if ($role == 'gudang' && auth()->user()->role != 5) {
             abort(code: 403);
         }
 
-        if ($role == 'production' && auth()->user()->role != 6) {
+        if ($role == 'produksi' && auth()->user()->role != 6) {
             abort(code: 403);
         }
 

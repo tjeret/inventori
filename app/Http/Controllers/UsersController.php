@@ -30,7 +30,7 @@ class UsersController extends Controller
             'suspend' => 'required|numeric',
         ]);
 
-        $user = User::create($this);
+        $user = new User();
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
