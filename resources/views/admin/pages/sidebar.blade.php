@@ -28,7 +28,6 @@ l
                         </li>
                         @endif
 
-
                         @if(auth()->user()->role == 1)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
