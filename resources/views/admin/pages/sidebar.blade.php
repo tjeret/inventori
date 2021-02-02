@@ -53,7 +53,7 @@
                     </li>
                 @endif
 
-                @can('supervisor')
+                @section('supervisor')
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
@@ -79,7 +79,7 @@
                     </li>
                     @endif
 
-                    @can('keuangan')
+                    @section('keuangan')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -137,9 +137,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endcan
+                    @endsection
 
-                    @can('accounting')
+                    @section('accounting')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
@@ -193,9 +193,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endcan
+                    @endsection
 
-                    @can('gudang')
+                    @section('gudang')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -231,9 +231,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endcan
+                    @endsection
 
-                    @can('produksi')
+                    @section('produksi')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -263,9 +263,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endcan
+                    @endsection
 
-                    @can('marketing')
+                    @section('marketing')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -289,7 +289,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endcan
+                    @endsection
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
