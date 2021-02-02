@@ -24,10 +24,16 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('welcome');
+})->middleware(['auth'])->name('dashboard');
+
 
 Route::group(['middleware' => ['auth']], function () {
 
