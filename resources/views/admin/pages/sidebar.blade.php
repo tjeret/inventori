@@ -1,95 +1,71 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <img src="{{ asset('vendor') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Project_TJ</span>
-    </a>
+l
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('vendor') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                    alt="User Image">
-            </div>
-            <div class="info">
-                <a href="{{ url('/profil') }}" class="d-block">{{ Auth::user()->username }}</a>
-            </div>
-        </div>
+                        @if(auth()->user()->role == 0)
+                        <li class="nav-item has-treeview">
+                                    <a href="#" class="nav-link active">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Administrator
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Master Data</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>
+                                                    Setup table
+                                                </p>
+                                            </a>
+                                        </li>
+                                </ul>
+                        </li>
+                        @endif
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
 
-                @if (auth()->user()->role == 0)
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        @if(auth()->user()->role == 1)
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Supervisor
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Daftar User</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Registrasi User</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
+
+                       @if(auth()->user()->role == 2)
+                        <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                Administrator
+                                Keuangan
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Master Data</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Setup table
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-
-                @section('supervisor')
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Supervisor
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Daftar User</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Registrasi User</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @endif
-
-                    @section('keuangan')
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Keuangan
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Transaksi Kas Biaya</p>
@@ -137,9 +113,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
+                        @endif
 
-                    @section('accounting')
+                        @if(auth()->user()->role == 3)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
@@ -193,9 +169,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
+                        @endif
 
-                    @section('gudang')
+                        @if(auth()->user()->role == 4)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -231,9 +207,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
+                        @endif
 
-                    @section('produksi')
+                        @if(auth()->user()->role == 5)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -263,9 +239,9 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
+                        @endif
 
-                    @section('marketing')
+                        @if(auth()->user()->role == 6)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -289,10 +265,5 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
-    </aside>
+                        @endif
+
