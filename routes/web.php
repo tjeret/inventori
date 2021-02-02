@@ -31,7 +31,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard', function () {
-    return view('welcome');
+    return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 

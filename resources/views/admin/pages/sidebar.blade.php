@@ -26,9 +26,9 @@ l
                                         </li>
                                 </ul>
                         </li>
-                        @endif
 
-                        @if(auth()->user()->role == 1)
+
+                        @if(auth()->user()->role == 0 || 1)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -54,7 +54,7 @@ l
                         </li>
                         @endif
 
-                       @if(auth()->user()->role == 2)
+                       @if(auth()->user()->role == 0 || 2)
                         <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
@@ -114,7 +114,7 @@ l
                         </li>
                         @endif
 
-                        @if(auth()->user()->role == 3)
+                        @if(auth()->user()->role == 0 || 3)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
@@ -170,7 +170,7 @@ l
                         </li>
                         @endif
 
-                        @if(auth()->user()->role == 4)
+                        @if(auth()->user()->role == 0 || 4)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -208,7 +208,7 @@ l
                         </li>
                         @endif
 
-                        @if(auth()->user()->role == 5)
+                        @if(auth()->user()->role == 0 || 5)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -240,7 +240,7 @@ l
                         </li>
                         @endif
 
-                        @if(auth()->user()->role == 6)
+                        @if(auth()->user()->role == 0 || 6)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -266,3 +266,4 @@ l
                         </li>
                         @endif
 
+                        @endif
