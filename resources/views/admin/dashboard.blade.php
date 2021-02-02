@@ -2,7 +2,10 @@
 <html>
 <h
 <head>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> main
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
@@ -30,6 +33,7 @@
   <link rel="stylesheet" href="{{ asset('vendor') }}/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<<<<<<< HEAD
 =======
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,6 +94,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     >>>>>>> main
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
