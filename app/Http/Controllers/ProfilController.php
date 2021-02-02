@@ -17,19 +17,15 @@ class ProfilController extends Controller
     public function index()
     {
         $user['user'] = Auth::user();
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
+
         // dd($user);
->>>>>>> Stashed changes
-=======
->>>>>>> main
+
         return view('admin.pages.User.profile', $user);
     }
 
     public function update(User $user, Request $request)
     {
-        // $user = 
+        // $user =
         $data = $request->validate([
             'name' => 'required|max:255' . $user->id,
             'phone' => 'required|email|max:255|unique:users,email,' . $user->id,
