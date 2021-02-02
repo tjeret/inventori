@@ -17,7 +17,7 @@ class ProfilController extends Controller
     {
         $user['user'] = Auth::user();
 
-        return view('admin.pages.user.profile', $user);
+        return view('admin.pages.User.profile', $user);
     }
 
     public function update(User $user, Request $request)

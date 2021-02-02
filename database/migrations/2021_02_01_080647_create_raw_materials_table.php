@@ -15,8 +15,10 @@ class CreateRawMaterialsTable extends Migration
     {
         Schema::create('raw_materials', function (Blueprint $table) {
             $table->string('material_id')->unique();
+            $table->integer('c_material');
             $table->string('name');
             $table->integer('quantity');
+            $table->integer('price');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class RawMaterial extends Model
 {
+    /**
+     * @property string matrial_id
+     * @property string name
+     * @property integer quantity
+     */
     use HasFactory;
 
     protected $fillable = [
