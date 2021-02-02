@@ -10,21 +10,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
 
 class ProfilController extends Controller
 {
     public function index()
     {
         $user['user'] = Auth::user();
-
+<<<<<<< Updated upstream
+=======
+        // dd($user);
+>>>>>>> Stashed changes
         return view('admin.pages.User.profile', $user);
     }
 
     public function update(User $user, Request $request)
     {
-        $user = Auth::user();
+        // $user = 
         $data = $request->validate([
-            'name' => 'required|max:255|unique:users,name,' . $user->id,
+            'name' => 'required|max:255' . $user->id,
             'phone' => 'required|email|max:255|unique:users,email,' . $user->id,
             'img' => 'required|mimes:jpeg,png,jpg,JPEG,PNG,JPG|max:2000',
         ]);

@@ -24,7 +24,7 @@ class Role
             abort(code: 403);
         }
 
-        if ($role == 'keuangan' && auth()->user()->role != 2) {
+        if ($role == 'keuangan' && auth()->user()->role != 2){
             abort(code: 403);
         }
 

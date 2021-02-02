@@ -25,7 +25,6 @@
                 <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
 
-                @if (auth()->user()->role == 0)
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -51,9 +50,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
 
-                @section('supervisor')
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
@@ -77,9 +74,7 @@
                             </li>
                         </ul>
                     </li>
-                    @endif
-
-                    @section('keuangan')
+                    
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -137,9 +132,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
-
-                    @section('accounting')
+                    
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
@@ -193,9 +186,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
-
-                    @section('gudang')
+                   
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -231,9 +222,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
-
-                    @section('produksi')
+                    
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -263,9 +252,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
-
-                    @section('marketing')
+                    
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -289,7 +276,6 @@
                                 </li>
                             </ul>
                         </li>
-                    @endsection
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
