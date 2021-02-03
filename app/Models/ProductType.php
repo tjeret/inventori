@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property  string name
+ * @property string name
  */
-class ProductCategory extends Model
+class ProductType extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name'];
 
-    public function profuct()
+    public function product()
     {
-        return $this->belongsTo(Product::class, 'category_id');
+        return $this->hasOne(Product::class, 'id_type', 'id');
     }
 }
