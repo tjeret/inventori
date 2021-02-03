@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHistoryProductsTable extends Migration
+class CreateSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateHistoryProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('history_products', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_product')->nullable();
-            $table->integer('id_peice_list')->nullable();
-            $table->integer('quantity')->default(0);
-            $table->integer('total')->default(0);
+            $table->string('name');
+            $table->string('address');
+            $table->string('phone');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +29,6 @@ class CreateHistoryProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('history_products');
+        Schema::dropIfExists('suppliers');
     }
 }

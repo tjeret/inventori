@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //supervisor
-    Route::group(['middleware' => 'role:1|0', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
+    Route::group(['middleware' => 'role:supervisor || admin', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
         Route::get('/', [SupervisorController::class, 'index'])->name('index');
         Route::get('/tambah-user', [SupervisorController::class, 'create'])->name('create');
         Route::post('/tambah', [SupervisorController::class, 'store'])->name('store');

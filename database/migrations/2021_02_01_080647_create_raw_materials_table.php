@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePriceListsTable extends Migration
+class CreateRawMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePriceListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('price_lists', function (Blueprint $table) {
-            $table->id();
-            $table->string('code');
-            $table->integer('id_product');
-            $table->integer('price_sell');
-            $table->integer('price_buy');
+        Schema::create('raw_materials', function (Blueprint $table) {
+            $table->string('material_id')->unique();
+            $table->integer('c_material');
+            $table->string('name');
+            $table->integer('quantity');
+            $table->integer('price');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreatePriceListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('price_lists');
+        Schema::dropIfExists('raw_materials');
     }
 }
