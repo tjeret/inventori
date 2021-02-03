@@ -15,7 +15,27 @@ class WarehouseController extends Controller
     public function index()
     {
         $material = RawMaterial::all();
-        dd($material);
+        // return view('admin.pages.warehouse.raw-material')->with([
+        //     'data' => $material
+        // ]);
+    }
+
+    public function rawmaterial()
+    {
+        $material = RawMaterial::all()->sortBy('id');
+        // dd($material);
+        return view('admin.pages.warehouse.raw-material')->with([
+            'data' => $material
+        ]);
+    }
+
+    public function mercendise()
+    {
+        $material = RawMaterial::all()->sortBy('id');
+        // dd($material);
+        return view('admin.pages.warehouse.mercendise')->with([
+            'data' => $material
+        ]);
     }
 
     /**

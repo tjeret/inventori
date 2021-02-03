@@ -2,10 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class SupervisorController extends Controller
 {
+
+    protected $listuser;
+
+    public function __construct()
+    {
+        $this->listuser = User::all();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +27,7 @@ class SupervisorController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.supervisor.index');
     }
 
     /**
@@ -23,7 +37,8 @@ class SupervisorController extends Controller
      */
     public function create()
     {
-        //
+        $data['data'] = Role::all();
+        return view('admin.pages.supervisor.create', $data);
     }
 
     /**

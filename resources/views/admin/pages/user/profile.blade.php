@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('admin.app')
 
 
 @section('title')
@@ -35,13 +35,8 @@
                             <input type="text" class="form-control mb-1" value="{{ Auth::user()->username }}" disabled>
                         </div>
                         <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-
                             <label class="control-label"><b>Nama:</b></label>
-                            <input type="text" name="name" class="form-control"
-                            <label class="control-label"><b>Nama:</b></label>
-                            <input type="text" name="name" class="form-control"
-
-                                value="{{ $user->profil->name }}" />
+                            <input type="text" name="name" class="form-control" value="{{ $user->profil->name }}" />
                             <?php if ($errors->has('name')): ?>
                             <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -52,19 +47,14 @@
                             <label class="form-label">E-mail</label>
                             <input type="text" class="form-control mb-1" value="{{ Auth::user()->email }}">
 
-                                <label class="form-label">Repeat new password</label>
-                                <input type="password" class="form-control">
-                            </div>
-                            <a href="#" class="btn btn-primary" type="submit" method ="post">Update</a>
+                            <label class="form-label">Repeat new password</label>
+                            <input type="password" class="form-control">
                         </div>
+                        <a href="#" class="btn btn-primary" type="submit" method="post">Update</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-info"> Submit </button>
-
         </div>
     </form>
 @endsection

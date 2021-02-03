@@ -30,12 +30,8 @@ Route::get('/', function () {
 // })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-
 Route::group(['middleware' => ['auth']], function () {
+
 
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
     Route::patch('/profil', [ProfilController::class, 'update'])->name('profil.update');
@@ -46,8 +42,10 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //supervisor
-    Route::group(['middleware' => 'role:supervisor', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
-        Route::get('/', [SupervisorController::class, 'index'])->name('supervisor');
+    Route::group(['middleware' => 'role:supervisor || admin', 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
+        Route::get('/', [SupervisorController::class, 'index'])->name('index');
+        Route::get('/tambah-user', [SupervisorController::class, 'create'])->name('create');
+        Route::post('/tambah', [SupervisorController::class, 'store'])->name('store');
     });
 
     //keuangan
@@ -63,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
     //warehouse
     Route::group(['middleware' => 'role:warehouse', 'prefix' => 'gudang', 'as' => 'warehouse.'], function () {
         Route::get('/', [WarehouseController::class, 'index'])->name('warehouse');
+        Route::get('/persediaan-bahan-baku', [WarehouseController::class, 'rawmaterial'])->name('material');
     });
 });
 
