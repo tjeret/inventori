@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('supervisor', function (User $user) {
             return $user->role == 1;
         });
-    
+
         Gate::define('keuangan', function (User $user) {
             return $user->role == 2;
         });
@@ -53,5 +54,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('marketing', function (User $user) {
             return $user->role == 0 &&  7;
         });
+
+        Passport::routes();
+        Passport::tokensExpireIn(now()->addDays(30));
     }
 }
