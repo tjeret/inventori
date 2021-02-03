@@ -6,27 +6,34 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property integer id_type
+ * @property string name
+ * @property integer unit
+ */
+
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $with = ['stock', 'user', 'type'];
 
-    protected $with = ['categories'];
-    /**
-     * @property string product_id
-     * @property integer category_id
-     * @property string name
-     * @property integer quantity
-     * @property integer price
-     * @property string qr_code
-     * @var array
-     */
     protected $fillable = [
-        'product_id', 'category_id', 'name', 'quantity', 'price', 'qr_code'
+        'id_type', 'id_user', 'name', 'unit'
     ];
 
-    public function categories()
+    public function stock()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->hasOne(ProductStock::class, 'id_product', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(ProductType::class, 'id_type');
     }
 }
