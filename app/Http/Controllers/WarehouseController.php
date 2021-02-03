@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\RawMaterial;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,29 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $material = RawMaterial::all();
-        dd($material);
+        $data = Product::all();
+        // return view('admin.pages.warehouse.raw-material')->with([
+        //     'data' => $material
+        // ]);
+        dd($data);
+    }
+
+    public function rawmaterial()
+    {
+        $material = RawMaterial::all()->sortBy('id');
+        // dd($material);
+        return view('admin.pages.warehouse.raw-material')->with([
+            'data' => $material
+        ]);
+    }
+
+    public function mercendise()
+    {
+        $material = RawMaterial::all()->sortBy('id');
+        // dd($material);
+        return view('admin.pages.warehouse.mercendise')->with([
+            'data' => $material
+        ]);
     }
 
     /**
