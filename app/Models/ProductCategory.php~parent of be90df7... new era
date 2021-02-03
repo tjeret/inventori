@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property string name
+ * @property  string name
  */
-class ProductType extends Model
+class ProductCategory extends Model
 {
     use HasFactory;
 
@@ -16,6 +16,6 @@ class ProductType extends Model
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'id_type', 'id');
+        return $this->belongsTo(Product::class, 'id');
     }
 }
