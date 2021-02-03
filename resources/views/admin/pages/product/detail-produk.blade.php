@@ -16,5 +16,13 @@
         <th>Harga</th>
         <th>Action</th>
     </thead>
+    <tbody>
+        <tr>
+            {{dump($product)}}
+            @foreach ($product as $item)
+
+            @endforeach
+        </tr>
+    </tbody>
 </table>
 @endsection

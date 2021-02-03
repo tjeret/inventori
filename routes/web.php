@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseController;
 
 /*
@@ -36,7 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
     Route::patch('/profil', [ProfilController::class, 'update'])->name('profil.update');
 
-    Route::get('/product', [ProfilController::class, 'index'])->name('product');
+    Route::get('/product', [ProductController::class, 'index'])->name('product');
     //Route::patch('/product', [ProfilController::class, 'update'])->name('profil.update');
     //admin
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
