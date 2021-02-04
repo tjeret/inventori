@@ -15,7 +15,7 @@ class CreatePriceListsTable extends Migration
     {
         Schema::create('price_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->integer('id_product');
             $table->integer('price_sell');
             $table->integer('price_buy');

@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('id_type');
             $table->integer('id_user');
             $table->string('name');
-            $table->integer('unit');
+            $table->integer('unit')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -83,9 +83,9 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <x-sidebar>
+
                         @include('admin.pages.sidebar')
-                        </x-sidebar>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
