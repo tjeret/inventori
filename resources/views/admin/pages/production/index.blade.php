@@ -44,7 +44,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->unit }}</td>
-                                    {{-- <td>{{ $item->stock->debit }}</td> --}}
+                                    <td>{{ $item->stock->debit }}</td>
                                     <td></td>
                                 </tr>
                             @endforeach
