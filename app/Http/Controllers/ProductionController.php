@@ -18,12 +18,14 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = [
-            'product' => Product::with('stock')->paginate(10),
-            'type' => ProductType::all()
-
-        ];
-        return view('admin.pages.production.index', $data);
+        $data = Product::with('stock')->paginate(5);
+        $type = ProductType::all();
+        // $data = Product::;
+        // dd($data);
+        return view('admin.pages.production.index')->with([
+            'product' => $data,
+            'type' => $type
+        ]);
     }
 
     /**
