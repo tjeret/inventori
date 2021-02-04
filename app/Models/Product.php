@@ -16,16 +16,11 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    // protected $with = ['stock', 'user', 'type'];
+    protected $with = ['stock', 'user', 'type'];
 
     protected $fillable = [
-        'id_type', 'id_user', 'name', 'unit'
+        'id_type', 'id_user', 'id_stock', 'name', 'unit'
     ];
-
-    public function stock()
-    {
-        return $this->hasOne(ProductStock::class, 'id_product', 'id');
-    }
 
     public function user()
     {
@@ -35,5 +30,10 @@ class Product extends Model
     public function type()
     {
         return $this->belongsTo(ProductType::class, 'id_type');
+    }
+
+    public function stock()
+    {
+        return $this->hasOne(ProductStock::class, 'id', 'id_stock');
     }
 }
