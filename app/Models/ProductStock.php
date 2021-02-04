@@ -29,4 +29,9 @@ class ProductStock extends Model
     {
         return $this->hasMany(PriceList::class, 'id_price_list');
     }
+
+    public function details()
+    {
+        return $this->hasMany(RecipeDetails::class, 'id_product', 'id');
+    }
 }

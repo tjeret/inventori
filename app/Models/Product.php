@@ -36,4 +36,9 @@ class Product extends Model
     {
         return $this->hasOne(ProductStock::class, 'id_product', 'id');
     }
+
+    public function details()
+    {
+        return $this->hasMany(RecipeDetails::class, 'id_product', 'id');
+    }
 }

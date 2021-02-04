@@ -11,6 +11,17 @@
                 Tambah Produk
             </button>
             <div class="card">
+                <div class="card-body">
+                    @if (Session::has('message'))
+                        <div class="alert alert-primary wow fadeInUp" data-wow-delay="0.7s">
+                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                                <i class="nc-icon nc-simple-remove"></i>
+                            </button>
+                            <span>
+                                {{ Session::get('message') }}
+                            </span>
+                        </div>
+                    @endif
                 <div class="card-header">
                     <h3 class="card-title">Responsive Hover Table</h3>
                     <div class="card-tools">
@@ -45,6 +56,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->unit }}</td>
                                     <td>{{ $item->stock->debit }}</td>
+                                    <td>{{ $item->type->name }}</td>
                                     <td></td>
                                 </tr>
                             @endforeach
