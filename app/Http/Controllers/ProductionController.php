@@ -18,10 +18,10 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = Product::paginate(2);
+        $data = Product::where('id', 20)->get();
         $type = ProductType::all();
 
-        // dd($data);
+        dd($data);
         return view('admin.pages.production.index')->with([
             'product' => $data,
             'type' => $type

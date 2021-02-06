@@ -15,15 +15,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PriceList extends Model
 {
-
     use HasFactory, SoftDeletes;
 
+    protected $with = ['product', 'supplier'];
+
     protected $fillable = [
-        'code', 'id_product', 'price_sell', 'price_buy'
+        'code', 'id_suplier', 'id_product', 'price_sell', 'price_buy'
     ];
 
     public function product()
     {
-        return $this->belongsTo(ProductStock::class, 'id_price_list', 'id');
+        return $this->belongsTo(Product::class, 'id_product', 'id');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'id_supplier', 'id');
     }
 }
