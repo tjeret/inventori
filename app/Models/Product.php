@@ -34,14 +34,11 @@ class Product extends Model
 
     public function stock()
     {
-<<<<<<< HEAD
         return $this->hasOne(ProductStock::class, 'id_product', 'id');
-=======
-<<<<<<< HEAD
-        return $this->hasOne(ProductStock::class, 'id_product', 'id');
-=======
-        return $this->hasOne(ProductStock::class, 'id', 'id_stock');
->>>>>>> main
->>>>>>> main
+    }
+
+    public function details()
+    {
+        return $this->hasMany(RecipeDetails::class, 'id_product', 'id');
     }
 }

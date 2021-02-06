@@ -18,9 +18,9 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = Product::with('stock')->paginate(5);
+        $data = Product::paginate(2);
         $type = ProductType::all();
-        // $data = Product::;
+
         // dd($data);
         return view('admin.pages.production.index')->with([
             'product' => $data,
@@ -46,8 +46,6 @@ class ProductionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
         $product = new Product();
         $product->id_user = Auth::user()->id;
         $product->id_type = $request->id_type;
@@ -68,7 +66,7 @@ class ProductionController extends Controller
         $productstock->credit = $request->credit;
         $productstock->save();
 
-        return redirect()->back()->with('message', "$request->name has been saved");
+        return redirect()->back()->with('message', "$request->name Berhasil di tambahkan");
     }
 
     /**
@@ -122,7 +120,7 @@ class ProductionController extends Controller
             $productstock->credit = $request->input('credit');
         }
         $productstock->save();
-        return redirect()->route('production.index')->with('success', 'Your info are updated');
+        return redirect()->route('production.index')->with('success', 'data telah berhasil di perbarui');
     }
 
     /**
@@ -136,6 +134,19 @@ class ProductionController extends Controller
         $product = Product::find($id);
         Product::destroy($id);
 
-        return redirect()->back()->with('message', "$product->name has been delete");
+        return redirect()->back()->with('message', "$product->name data berhasil dihapus");
+    }
+
+    public function addproducttype(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|unique:users',
+        ]);
+
+        $type = new ProductType();
+        $type->name = $request->name;
+        $type->save();
+
+        return redirect()->back()->with('message', "$type->name berhasil ditambahkan");
     }
 }
