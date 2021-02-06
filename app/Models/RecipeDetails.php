@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer id_stock
  * @property integer id_type
  * @property integer id_recipe
+ * @property string description
  */
 
 class RecipeDetails extends Model
