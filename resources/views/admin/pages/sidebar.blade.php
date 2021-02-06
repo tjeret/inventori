@@ -207,8 +207,8 @@
 @endif
 
 @if (auth()->user()->role == 5 || auth()->user()->role == 0)
-    <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+    <li class="nav-item has-treeview {{ request()->is(['produksi/*', 'produksi']) ? 'menu-open' : '' }}">
+        <a href="#" class="nav-link {{ request()->is(['produksi/*', 'produksi']) ? 'active' : '' }}">
             <i class="nav-icon fas fa-table"></i>
             <p>
                 Produksi
@@ -217,7 +217,8 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="{{ route('production.index') }}" class="nav-link">
+                <a href="{{ route('production.index') }}"
+                    class="nav-link  {{ request()->is('produksi') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Transaksi Bahan Baku Produksi</p>
                 </a>

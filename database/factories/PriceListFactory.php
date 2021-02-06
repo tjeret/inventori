@@ -24,7 +24,7 @@ class PriceListFactory extends Factory
         return [
             'code' => $this->faker->name(),
             'id_supplier' => 2,
-            'id_product' => $this->faker->randomDigit(),
+            'id_product' => $this->faker->numberBetween($min = 1, $max = 5),
             'price_sell' => $this->faker->numberBetween($min = 10000, $max = 100000),
             'price_buy' => $this->faker->numberBetween($min = 10000, $max = 100000),
         ];

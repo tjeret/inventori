@@ -10,6 +10,9 @@
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
                 Tambah Produk
             </button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#resep">
+                Tambah Resep
+            </button>
             <div class="card">
                 <div class="card-body">
                     @if (Session::has('message'))

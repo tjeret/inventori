@@ -18,10 +18,10 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = Product::where('id', 20)->get();
+        $data = Product::where('id', 2)->get();
         $type = ProductType::all();
 
-        dd($data);
+        // dd($data);
         return view('admin.pages.production.index')->with([
             'product' => $data,
             'type' => $type
@@ -46,6 +46,7 @@ class ProductionController extends Controller
      */
     public function store(Request $request)
     {
+
         $product = new Product();
         $product->id_user = Auth::user()->id;
         $product->id_type = $request->id_type;

@@ -18,10 +18,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\ProductStock::factory(15)->create();
         \App\Models\ProductType::factory(15)->create();
         \App\Models\PriceList::factory(15)->create();
-        // $this->call(UserSeeder::class);
-        // $this->call(RoleSeeder::class);
-        // $this->call(ProfilSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(ProfilSeeder::class);
         // $this->call(Supplierseed::class);
-        // $this->call(Purchases::class);
     }
 }
