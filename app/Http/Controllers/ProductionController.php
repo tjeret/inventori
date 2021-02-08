@@ -135,19 +135,6 @@ class ProductionController extends Controller
         $product = Product::find($id);
         Product::destroy($id);
 
-        return redirect()->back()->with('message', "$product->name data berhasil dihapus");
-    }
-
-    public function addproducttype(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required|string|unique:users',
-        ]);
-
-        $type = new ProductType();
-        $type->name = $request->name;
-        $type->save();
-
-        return redirect()->back()->with('message', "$type->name berhasil ditambahkan");
+        return redirect()->back()->with('message', "Produk $product->name data berhasil dihapus");
     }
 }

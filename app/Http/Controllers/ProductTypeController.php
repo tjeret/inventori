@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class ProductTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,14 +36,14 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|unique:recipes',
+            'name' => 'required|string|unique:users',
         ]);
 
-        $category = new Recipe();
-        $category->name = $request->name;
-        $category->save();
+        $type = new ProductType();
+        $type->name = $request->name;
+        $type->save();
 
-        return redirect()->back()->with('message', "Resep $request->name Berhasil di tambahkan");
+        return redirect()->back()->with('message', "$type->name berhasil ditambahkan");
     }
 
     /**
@@ -81,7 +81,7 @@ class RecipeController extends Controller
             'name' => 'required|string|unique:recipes',
         ]);
 
-        $category = Recipe::find($id);
+        $category = ProductType::find($id);
         $category->name = $request->name;
         $category->save();
     }
@@ -94,8 +94,8 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        $recipe = Recipe::find($id);
-        Recipe::destroy($id);
+        $recipe = ProductType::find($id);
+        ProductType::destroy($id);
 
         return redirect()
             ->back()

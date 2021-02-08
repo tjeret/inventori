@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
+use App\Models\Product;
+use App\Models\ProductStock;
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class ProductStockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,14 +37,20 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|unique:recipes',
+            'id_product' => 'required|numeric',
+            'id_price_list' => 'required|numeric',
+            'debit' => 'required|numeric',
+            'credit' => 'required|numeric',
         ]);
 
-        $category = new Recipe();
-        $category->name = $request->name;
-        $category->save();
+        $stock = new ProductStock();
+        $stock->id_product = $request->id_product;
+        $stock->id_price_list = $request->id_price_list;
+        $stock->debit = $request->debit;
+        $stock->credit = $request->credit;
+        $stock->save();
 
-        return redirect()->back()->with('message', "Resep $request->name Berhasil di tambahkan");
+        return redirect()->back()->with('message', "$stock->name berhasil ditambahkan");
     }
 
     /**
@@ -77,13 +84,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|string|unique:recipes',
-        ]);
-
-        $category = Recipe::find($id);
-        $category->name = $request->name;
-        $category->save();
+        //
     }
 
     /**
@@ -94,11 +95,6 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        $recipe = Recipe::find($id);
-        Recipe::destroy($id);
-
-        return redirect()
-            ->back()
-            ->with('message', "Resep $recipe->name data berhasil dihapus");
+        //
     }
 }

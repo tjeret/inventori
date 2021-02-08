@@ -13,6 +13,9 @@
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#resep">
                 Tambah Resep
             </button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#resep-details">
+                Tambah Resep Details
+            </button>
             <div class="card">
                 <div class="card-body">
                     @if (Session::has('message'))
@@ -25,52 +28,65 @@
                             </span>
                         </div>
                     @endif
-                <div class="card-header">
-                    <h3 class="card-title">Responsive Hover Table</h3>
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <div class="card-header">
+                        <h3 class="card-title">Responsive Hover Table</h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right"
+                                    placeholder="Search">
 
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Barang</th>
-                                <th>Jumlah</th>
-                                <th>Jenis</th>
-                                <th>Reason</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{-- {{ dump($product) }} --}}
-                            @foreach ($product as $item)
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->unit }}</td>
-                                    <td>{{ $item->stock->debit }}</td>
-                                    <td>{{ $item->type->name }}</td>
-                                    <td></td>
+                                    <th>No</th>
+                                    <th>Nama Barang</th>
+                                    <th>Jumlah</th>
+                                    <th>Jenis</th>
+                                    <th>Reason</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {{-- {{ dump($product) }} --}}
+                                @foreach ($product as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->unit }}</td>
+                                        <td>{{ $item->stock->debit }}</td>
+                                        <td>{{ $item->type->name }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.card-body -->
+                <!-- /.card -->
             </div>
-            <!-- /.card -->
         </div>
     </div>
 
     @include('admin.pages.production.modal')
+@endsection
+
+@section('addCss')
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
+@endsection
+
+@section('addJs')
+    <script src="{{ asset('vendor') }}/dist/js/select.js"></script>
+    <script src="{{ asset('vendor') }}/dist/js/select2.js"></script>
+    @include('admin.pages.production.add')
 @endsection

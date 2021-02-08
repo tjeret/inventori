@@ -9,7 +9,8 @@ use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductionController;
-use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\RecipeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('/', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
+require __DIR__ . '/auth.php';
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -67,6 +70,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => 'role:warehouse', 'prefix' => 'produksi', 'as' => 'production.'], function () {
         Route::get('/', [ProductionController::class, 'index'])->name('index');
         Route::post('/', [ProductionController::class, 'store'])->name('store');
+
+        //recipe
+        Route::post('/resep', [RecipeController::class, 'store'])->name('recipe');
+        Route::post('/destroy', [RecipeController::class, 'destroy'])->name('destroy');
+
+        //recipedetails
+
     });
 
     //warehouse
@@ -75,6 +85,3 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/persediaan-bahan-baku', [WarehouseController::class, 'rawmaterial'])->name('material');
     });
 });
-
-
-require __DIR__ . '/auth.php';
