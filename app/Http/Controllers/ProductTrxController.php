@@ -2,24 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
-use App\Models\User;
-use Illuminate\Auth\Events\Registered;
+use App\Models\ProductTrx;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
-class SupervisorController extends Controller
+class ProductTrxController extends Controller
 {
-
-    protected $listuser;
-
-    public function __construct()
-    {
-        $this->listuser = User::all();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +14,7 @@ class SupervisorController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.supervisor.index');
+        //
     }
 
     /**
@@ -37,8 +24,7 @@ class SupervisorController extends Controller
      */
     public function create()
     {
-        $data['data'] = Role::all();
-        return view('admin.pages.supervisor.create', $data);
+        //
     }
 
     /**
@@ -55,10 +41,10 @@ class SupervisorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ProductTrx  $productTrx
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProductTrx $productTrx)
     {
         //
     }
@@ -66,10 +52,10 @@ class SupervisorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ProductTrx  $productTrx
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProductTrx $productTrx)
     {
         //
     }
@@ -78,10 +64,10 @@ class SupervisorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\ProductTrx  $productTrx
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ProductTrx $productTrx)
     {
         //
     }
@@ -89,10 +75,10 @@ class SupervisorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\ProductTrx  $productTrx
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductTrx $productTrx)
     {
         //
     }

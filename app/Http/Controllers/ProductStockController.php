@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\ProductStock;
 use Illuminate\Http\Request;
 
@@ -36,30 +35,16 @@ class ProductStockController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'id_product' => 'required|numeric',
-            'id_price_list' => 'required|numeric',
-            'debit' => 'required|numeric',
-            'credit' => 'required|numeric',
-        ]);
-
-        $stock = new ProductStock();
-        $stock->id_product = $request->id_product;
-        $stock->id_price_list = $request->id_price_list;
-        $stock->debit = $request->debit;
-        $stock->credit = $request->credit;
-        $stock->save();
-
-        return redirect()->back()->with('message', "$stock->name berhasil ditambahkan");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ProductStock  $productStock
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProductStock $productStock)
     {
         //
     }
@@ -67,10 +52,10 @@ class ProductStockController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ProductStock  $productStock
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProductStock $productStock)
     {
         //
     }
@@ -79,10 +64,10 @@ class ProductStockController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\ProductStock  $productStock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ProductStock $productStock)
     {
         //
     }
@@ -90,10 +75,10 @@ class ProductStockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\ProductStock  $productStock
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductStock $productStock)
     {
         //
     }

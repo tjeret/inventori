@@ -9,6 +9,7 @@ use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductionController;
+use App\Http\Controllers\RecipeDetailController;
 use App\Http\Controllers\RecipeController;
 
 
@@ -67,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //Production
-    Route::group(['middleware' => 'role:warehouse', 'prefix' => 'produksi', 'as' => 'production.'], function () {
+    Route::group(['middleware' => 'role:production', 'prefix' => 'produksi', 'as' => 'production.'], function () {
         Route::get('/', [ProductionController::class, 'index'])->name('index');
         Route::post('/', [ProductionController::class, 'store'])->name('store');
 
@@ -76,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/destroy', [RecipeController::class, 'destroy'])->name('destroy');
 
         //recipedetails
-
+        Route::get('/detail', [RecipeDetailController::class, 'index'])->name('detail');
     });
 
     //warehouse

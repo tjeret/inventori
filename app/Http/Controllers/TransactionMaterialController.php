@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
+use App\Models\TransactionMaterial;
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class TransactionMaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,24 +35,16 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|unique:recipes',
-        ]);
-
-        $category = new Recipe();
-        $category->name = $request->name;
-        $category->save();
-
-        return redirect()->back()->with('message', "Resep $request->name Berhasil di tambahkan");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\TransactionMaterial  $transactionMaterial
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TransactionMaterial $transactionMaterial)
     {
         //
     }
@@ -60,10 +52,10 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\TransactionMaterial  $transactionMaterial
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TransactionMaterial $transactionMaterial)
     {
         //
     }
@@ -72,33 +64,22 @@ class RecipeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\TransactionMaterial  $transactionMaterial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TransactionMaterial $transactionMaterial)
     {
-        $this->validate($request, [
-            'name' => 'required|string|unique:recipes',
-        ]);
-
-        $category = Recipe::find($id);
-        $category->name = $request->name;
-        $category->save();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\TransactionMaterial  $transactionMaterial
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TransactionMaterial $transactionMaterial)
     {
-        $recipe = Recipe::find($id);
-        Recipe::destroy($id);
-
-        return redirect()
-            ->back()
-            ->with('message', "Resep $recipe->name data berhasil dihapus");
+        //
     }
 }

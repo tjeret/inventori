@@ -16,9 +16,8 @@ class CreateProductStocksTable extends Migration
         Schema::create('product_stocks', function (Blueprint $table) {
             $table->id();
             $table->integer('id_product');
-            $table->integer('id_price_list');
-            $table->integer('debit');
-            $table->integer('credit');
+            $table->integer('value');
+            $table->dateTime('product_date');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -7,21 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property string name
- * @property string contact
- * @property string address
+ * @property integer id_recipt
+ * @property integer id_material
+ * @property integer value
  */
-
-class Supplier extends Model
+class ingredient extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'contact', 'addres'
+        'id_recipt', 'id_material', 'value'
     ];
 
-    public function purcasing()
+    public function material()
     {
-        return $this->hasOne(Purcasing::class, 'id_supplier', 'id');
+        return $this->hasOne(Material::class, 'id');
     }
 }

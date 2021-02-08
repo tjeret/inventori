@@ -76,7 +76,6 @@
             </div>
         </div>
     </div>
-
     @include('admin.pages.production.modal')
 @endsection
 
@@ -87,6 +86,5 @@
 
 @section('addJs')
     <script src="{{ asset('vendor') }}/dist/js/select.js"></script>
-    <script src="{{ asset('vendor') }}/dist/js/select2.js"></script>
     @include('admin.pages.production.add')
 @endsection

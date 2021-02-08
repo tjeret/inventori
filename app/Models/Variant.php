@@ -7,25 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property integer id_product
- * @property integer value
- * @property dateTime product_date
+ * @property string type
+ * @property string name
+ * @property string description
+ * @property integer enable
  */
-class ProductStock extends Model
+class Variant extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'id_product', 'value', 'product_date'
+        'type', 'name', 'description', 'enable'
     ];
 
     public function product()
     {
         return $this->hasOne(Product::class, 'id');
-    }
-
-    public function producttrx()
-    {
-        return $this->belongsTo(ProductTrx::class, 'id_product_stock', 'id');
     }
 }

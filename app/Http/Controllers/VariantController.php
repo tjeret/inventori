@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 
-class WarehouseController extends Controller
+class VariantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,29 +14,7 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $data = Product::all();
-        // return view('admin.pages.warehouse.raw-material')->with([
-        //     'data' => $material
-        // ]);
-        dd($data);
-    }
-
-    public function rawmaterial()
-    {
-        $material = RawMaterial::all()->sortBy('id');
-        // dd($material);
-        return view('admin.pages.warehouse.raw-material')->with([
-            'data' => $material
-        ]);
-    }
-
-    public function mercendise()
-    {
-        $material = RawMaterial::all()->sortBy('id');
-        // dd($material);
-        return view('admin.pages.warehouse.mercendise')->with([
-            'data' => $material
-        ]);
+        //
     }
 
     /**
@@ -63,10 +41,10 @@ class WarehouseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Variant  $variant
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Variant $variant)
     {
         //
     }
@@ -74,10 +52,10 @@ class WarehouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Variant  $variant
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Variant $variant)
     {
         //
     }
@@ -86,10 +64,10 @@ class WarehouseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Variant  $variant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Variant $variant)
     {
         //
     }
@@ -97,10 +75,10 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Variant  $variant
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Variant $variant)
     {
         //
     }

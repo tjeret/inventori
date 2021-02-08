@@ -7,38 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property integer id_type
+ * @property integer id_price
+ * @property integer id_variant
  * @property string name
- * @property integer unit
+ * @property integer label
  */
 
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $with = ['stock', 'user', 'type'];
-
     protected $fillable = [
-        'id_type', 'id_user', 'id_stock', 'name', 'unit'
+        'id_price', 'id_variant', 'name', 'label'
     ];
 
-    public function user()
+    public function price()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(Price::class, 'id_price', 'id');
     }
 
-    public function type()
+    public function variant()
     {
-        return $this->belongsTo(ProductType::class, 'id_type');
+        return $this->belongsTo(Variant::class, 'id_varian', 'id');
     }
 
-    public function stock()
+    public function productstock()
     {
-        return $this->hasOne(ProductStock::class, 'id_product', 'id');
-    }
-
-    public function details()
-    {
-        return $this->hasMany(RecipeDetails::class, 'id_product', 'id');
+        return $this->hasOne(ProductStock::class,'id')
     }
 }

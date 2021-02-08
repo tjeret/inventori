@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductType;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
-class ProductTypeController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,24 +35,16 @@ class ProductTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|unique:users',
-        ]);
-
-        $type = new ProductType();
-        $type->name = $request->name;
-        $type->save();
-
-        return redirect()->back()->with('message', "$type->name berhasil ditambahkan");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Stock $stock)
     {
         //
     }
@@ -60,10 +52,10 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Stock $stock)
     {
         //
     }
@@ -72,33 +64,22 @@ class ProductTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Stock $stock)
     {
-        $this->validate($request, [
-            'name' => 'required|string|unique:recipes',
-        ]);
-
-        $category = ProductType::find($id);
-        $category->name = $request->name;
-        $category->save();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Stock $stock)
     {
-        $recipe = ProductType::find($id);
-        ProductType::destroy($id);
-
-        return redirect()
-            ->back()
-            ->with('message', "Resep $recipe->name data berhasil dihapus");
+        //
     }
 }

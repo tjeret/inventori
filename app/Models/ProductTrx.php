@@ -7,21 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property string name
- * @property string contact
- * @property string address
+ * @property integer id_product_stock
+ * @property integer credit
+ * @property integer debit
  */
-
-class Supplier extends Model
+class ProductTrx extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'contact', 'addres'
+        'id_product_stock', 'debit', 'credit'
     ];
 
-    public function purcasing()
+    public function productStock()
     {
-        return $this->hasOne(Purcasing::class, 'id_supplier', 'id');
+        return $this->hasOne(ProductStock::class, 'id');
     }
 }
