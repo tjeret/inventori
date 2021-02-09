@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Purcasing;
+use App\Models\Recipt;
+use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,14 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Product::factory(15)->create();
-        \App\Models\ProductStock::factory(15)->create();
-        \App\Models\ProductType::factory(15)->create();
-        \App\Models\PriceList::factory(15)->create();
         $this->call(UserSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(ProfilSeeder::class);
+        $this->call(IngredientSeeder::class);
+        $this->call(MaterialSeeder::class);
+        $this->call(PriceSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(ProductStockSeeder::class);
+        $this->call(ProductTrxSeeder::class);
+        $this->call(PurcasingSeeder::class);
+        $this->call(ReciptSeeder::class);
+        $this->call(StockSeeder::class);
+        $this->call(VariantSeeder::class);
+        $this->call(SupplierSeeder::class);
         // $this->call(Supplierseed::class);
     }
 }

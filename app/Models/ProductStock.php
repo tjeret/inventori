@@ -19,6 +19,17 @@ class ProductStock extends Model
         'id_product', 'value', 'product_date'
     ];
 
+<<<<<<< HEAD
+    // public function product()
+    // {
+    //     return $this->hasOne(Product::class, 'id');
+    // }
+
+    // public function producttrx()
+    // {
+    //     return $this->belongsTo(ProductTrx::class, 'id_product_stock', 'id');
+    // }
+=======
     public function product()
     {
         return $this->hasOne(Product::class, 'id');
@@ -28,4 +39,5 @@ class ProductStock extends Model
     {
         return $this->belongsTo(ProductTrx::class, 'id_product_stock', 'id');
     }
+>>>>>>> main
 }
