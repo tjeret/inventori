@@ -17,6 +17,11 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $with = [
+        'price',
+        'variant',
+        'productstock'
+    ];
     protected $fillable = [
         'id_price', 'id_variant', 'name', 'label'
     ];
@@ -28,11 +33,11 @@ class Product extends Model
 
     public function variant()
     {
-        return $this->belongsTo(Variant::class, 'id_varian', 'id');
+        return $this->belongsTo(Variant::class, 'id_variant', 'id');
     }
 
     public function productstock()
     {
-        return $this->hasOne(ProductStock::class,'id')
+        return $this->hasOne(ProductStock::class, 'id');
     }
 }

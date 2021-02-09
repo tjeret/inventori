@@ -53,5 +53,15 @@ class RoleSeeder extends Seeder
             ['name' => 'Marketing'],
         );
         $data->save();
+
+        $data =  Role::create(
+            ['name' => 'Customer'],
+        );
+        $data->save();
+
+        $data =  Role::create(
+            ['name' => 'Member'],
+        );
+        $data->save();
     }
 }

@@ -35,7 +35,19 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'contact' => 'required|string',
+        ]);
+
+        $category = new Supplier();
+        $category->name = $request->name;
+        $category->address = $request->address;
+        $category->contact = $request->contact;
+        $category->save();
+
+        return redirect()->back()->with('message', "Supplier $request->name telah berhasil di simpan");
     }
 
     /**

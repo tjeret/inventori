@@ -34,9 +34,9 @@ Route::get('/', function () {
 // })->middleware(['auth'])->name('dashboard');
 require __DIR__ . '/auth.php';
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
