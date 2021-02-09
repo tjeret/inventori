@@ -35,7 +35,19 @@ class VariantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'type' => 'required|string',
+            'name' => 'required|string',
+            'description' => 'required|string|unique:contact',
+        ]);
+
+        $variant = new Variant();
+        $variant->type = $request->type;
+        $variant->name = $request->name;
+        $variant->description = $request->description;
+        $variant->save();
+
+        return redirect()->back()->with('message', "variant $request->name telah berhasil di ubah");
     }
 
     /**
@@ -67,9 +79,21 @@ class VariantController extends Controller
      * @param  \App\Models\Variant  $variant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Variant $variant)
+    public function update(Request $request, Variant $variant, $id)
     {
-        //
+        $this->validate($request, [
+            'type' => 'required|string',
+            'name' => 'required|string',
+            'description' => 'required|string|unique:contact',
+        ]);
+
+        $variant = Variant::find($id);
+        $variant->type = $request->type;
+        $variant->name = $request->name;
+        $variant->description = $request->description;
+        $variant->save();
+
+        return redirect()->back()->with('message', "Variant $request->name telah berhasil di ubah");
     }
 
     /**

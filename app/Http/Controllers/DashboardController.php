@@ -12,6 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $data = Product::all();
         return view('admin.pages.dashboard');
     }
 }
