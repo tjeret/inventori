@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ingredient;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -35,7 +35,19 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_recipt' => 'required|min:1',
+            'id_material' => 'required|min:1',
+            'value' => 'required|min:1',
+        ]);
+
+        $ingredient = new ingredient();
+        $ingredient->id_recipt = $request->id_recipt;
+        $ingredient->id_material = $request->id_material;
+        $ingredient->value = $request->value;
+        $ingredient->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil di tambah");
     }
 
     /**
@@ -67,19 +79,34 @@ class IngredientController extends Controller
      * @param  \App\Models\ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ingredient $ingredient)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'id_recipt' => 'required|min:1',
+            'id_material' => 'required|min:1',
+            'value' => 'required|min:1',
+        ]);
+
+        $ingredient = Ingredient::find($id);
+        $ingredient->id_recipt = $request->id_recipt;
+        $ingredient->id_material = $request->id_material;
+        $ingredient->value = $request->value;
+        $ingredient->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil di tambah");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ingredient  $ingredient
+     * @param  \App\Models\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ingredient $ingredient)
+    public function destroy(Ingredient $ingredient, $id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        Ingredient::destroy($id);
+
+        return redirect()->back()->with('message', "data berhasil di hapus");
     }
 }

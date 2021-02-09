@@ -35,7 +35,17 @@ class ReciptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_product' => 'required|min:1',
+            'name' => 'required|min:1',
+        ]);
+
+        $stock = new Recipt();
+        $stock->id_product = $request->id_product;
+        $stock->name = $request->name;
+        $stock->save();
+
+        return redirect()->back()->with('message', "Resep $request->name tela berhasil disimpan");
     }
 
     /**
@@ -67,9 +77,19 @@ class ReciptController extends Controller
      * @param  \App\Models\Recipt  $recipt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipt $recipt)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'id_product' => 'required|min:1',
+            'name' => 'required|min:1',
+        ]);
+
+        $recipt = Recipt::find($id);
+        $recipt->id_product = $request->id_product;
+        $recipt->name = $request->name;
+        $recipt->save();
+
+        return redirect()->back()->with('message', "Resep $request->name tela berhasil disimpan");
     }
 
     /**

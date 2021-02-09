@@ -35,7 +35,17 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:1',
+            'unit' => 'required|min:1',
+        ]);
+
+        $material = new Material();
+        $material->name = $request->name;
+        $material->unit = $request->unit;
+        $material->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil di tambah");
     }
 
     /**
@@ -67,9 +77,19 @@ class MaterialController extends Controller
      * @param  \App\Models\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, Material $material, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:1',
+            'unit' => 'required|min:1',
+        ]);
+
+        $material = Material::find($id);
+        $material->name = $request->name;
+        $material->unit = $request->unit;
+        $material->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil ubah");
     }
 
     /**
@@ -78,8 +98,11 @@ class MaterialController extends Controller
      * @param  \App\Models\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Material $material)
+    public function destroy(Material $material, $id)
     {
-        //
+        $material = Material::find($id);
+        Material::destroy($id);
+
+        return redirect()->back()->with('message', "$material->name has been delete");
     }
 }
