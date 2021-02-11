@@ -179,7 +179,7 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item ">
-                <a href="{{ route('warehouse.material') }}" class="nav-link">
+                <a href="{{ route('warehouse.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Persediaan Bahan Baku</p>
                 </a>

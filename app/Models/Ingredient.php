@@ -23,4 +23,9 @@ class Ingredient extends Model
     {
         return $this->hasOne(Material::class, 'id');
     }
+
+    public function recipt()
+    {
+        return $this->hasOne(Recipt::class, 'id');
+    }
 }

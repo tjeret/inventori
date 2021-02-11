@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Material;
+use App\Models\Stock;
+use App\Models\TransactionMaterial;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -44,6 +46,27 @@ class MaterialController extends Controller
         $material->name = $request->name;
         $material->unit = $request->unit;
         $material->save();
+
+        $this->validate($request, [
+            'id_purcasing' => 'required|min:1',
+            'id_material' => 'required|min:1',
+            'expired_date' => 'required',
+        ]);
+
+        $stock = new Stock();
+        $stock->id_purcasing = $request->id_purcasing;
+        $stock->id_material = $request->id_material;
+        $stock->expired_date = $request->expired_date;
+        $stock->save();
+
+        $this->validate($request, [
+            'itemin' => 'required',
+        ]);
+
+        $item = new TransactionMaterial();
+        $item->id_stock = $stock->id;
+        $item->itemin = $request->itemin;
+        $item->save();
 
         return redirect()->back()->with('message', "Data telah berhasil di tambah");
     }

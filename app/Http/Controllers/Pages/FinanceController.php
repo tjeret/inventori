@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
-use App\Models\Recipt;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ReciptController extends Controller
+class FinanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,27 +35,16 @@ class ReciptController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'id_product' => 'required|min:1',
-            'name' => 'required|min:1',
-        ]);
-
-        $stock = new Recipt();
-        $stock->id_product = $request->id_product;
-        $stock->name = $request->name;
-        $stock->save();
-
-        return redirect()->back()->with('message', "Resep $request->name tela berhasil disimpan");
+        //
     }
-
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Recipt  $recipt
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipt $recipt)
+    public function show($id)
     {
         //
     }
@@ -63,10 +52,10 @@ class ReciptController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Recipt  $recipt
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipt $recipt)
+    public function edit($id)
     {
         //
     }
@@ -75,31 +64,21 @@ class ReciptController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Recipt  $recipt
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'id_product' => 'required|min:1',
-            'name' => 'required|min:1',
-        ]);
-
-        $recipt = Recipt::find($id);
-        $recipt->id_product = $request->id_product;
-        $recipt->name = $request->name;
-        $recipt->save();
-
-        return redirect()->back()->with('message', "Resep $request->name tela berhasil disimpan");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Recipt  $recipt
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipt $recipt)
+    public function destroy($id)
     {
         //
     }

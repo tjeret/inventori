@@ -15,7 +15,7 @@ class Material extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $with = ['stock'];
+    // protected $with = ['ingredient'];
 
     protected $fillable = [
         'name', 'unit'
@@ -28,6 +28,6 @@ class Material extends Model
 
     public function ingredient()
     {
-        return $this->belongsTo(Ingredient::class, 'id_material', 'id');
+        return $this->belongsTo(Ingredient::class, 'id', 'id_material');
     }
 }

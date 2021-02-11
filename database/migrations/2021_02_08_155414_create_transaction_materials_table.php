@@ -16,8 +16,8 @@ class CreateTransactionMaterialsTable extends Migration
         Schema::create('transaction_materials', function (Blueprint $table) {
             $table->id();
             $table->integer('id_stock');
-            $table->integer('itemin');
-            $table->integer('itemout');
+            $table->integer('itemin')->nullable()->default(0);
+            $table->integer('itemout')->nullable()->default(0);;
             $table->timestamps();
             $table->softDeletes();
         });

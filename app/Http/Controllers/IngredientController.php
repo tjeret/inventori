@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
+use App\Models\Material;
+use App\Models\Recipt;
+use App\Models\Stock;
+use App\Models\TransactionMaterial;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -41,11 +45,23 @@ class IngredientController extends Controller
             'value' => 'required|min:1',
         ]);
 
+        //tambah bahan
         $ingredient = new ingredient();
         $ingredient->id_recipt = $request->id_recipt;
         $ingredient->id_material = $request->id_material;
         $ingredient->value = $request->value;
         $ingredient->save();
+
+        //mengambil stok
+
+        $transaction = new TransactionMaterial();
+        $transaction->id_recipt = $request->id_recipt;
+        $transaction->id_material = $request->id_material;
+        $transaction->value = $request->value;
+        $transaction->save();
+
+
+        //mengurangi stock
 
         return redirect()->back()->with('message', "Data telah berhasil di tambah");
     }

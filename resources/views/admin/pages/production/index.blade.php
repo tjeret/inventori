@@ -57,17 +57,23 @@
                             </thead>
                             <tbody>
                                 {{-- {{ dump($product) }} --}}
-                                @foreach ($product as $item)
+                                @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->unit }}</td>
-                                        <td>{{ $item->stock->debit }}</td>
-                                        <td>{{ $item->type->name }}</td>
-                                        <td></td>
+                                        <td>{{ $item->recipt->name }}</td>
+                                        <td>{{ $item->material->name }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Barang</th>
+                                    <th>Jumlah</th>
+                                    <th>Jenis</th>
+                                    <th>Reason</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -76,7 +82,7 @@
             </div>
         </div>
     </div>
-    @include('admin.pages.production.modal')
+    {{-- @include('admin.pages.production.modal') --}}
 @endsection
 
 @section('addCss')
@@ -86,5 +92,5 @@
 
 @section('addJs')
     <script src="{{ asset('vendor') }}/dist/js/select.js"></script>
-    @include('admin.pages.production.add')
+    {{-- @include('admin.pages.production.add') --}}
 @endsection
