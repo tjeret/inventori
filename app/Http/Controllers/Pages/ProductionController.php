@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Ingredient;
 use App\Models\Material;
 use App\Models\Recipt;
+=======
+>>>>>>> Backend
 use Illuminate\Http\Request;
 
 class ProductionController extends Controller
@@ -17,6 +20,7 @@ class ProductionController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $data = Ingredient::with(['material', 'recipt'])->get();
 
         // dd($data);
@@ -34,6 +38,9 @@ class ProductionController extends Controller
             'data' => $data,
             'bahan' => $bahan
         ]);
+=======
+        //
+>>>>>>> Backend
     }
 
     /**
