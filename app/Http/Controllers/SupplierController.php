@@ -36,15 +36,15 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string',
+            'owner' => 'required|string',
             'address' => 'required|string',
-            'contact' => 'required|string',
+            'name' => 'required|string',
         ]);
 
         $supplier = new Supplier();
-        $supplier->name = $request->name;
+        $supplier->owner = $request->owner;
         $supplier->address = $request->address;
-        $supplier->contact = $request->contact;
+        $supplier->name = $request->name;
         $supplier->save();
 
         return redirect()->back()->with('message', "Supplier $request->name telah berhasil di simpan");

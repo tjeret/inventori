@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionMaterialsTable extends Migration
+class CreateRawTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateTransactionMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_materials', function (Blueprint $table) {
+        Schema::create('raw_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_stock');
-            $table->integer('itemin')->nullable()->default(0);
-            $table->integer('itemout')->nullable()->default(0);;
+            $table->string("name");
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +27,6 @@ class CreateTransactionMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_materials');
+        Schema::dropIfExists('raw_types');
     }
 }

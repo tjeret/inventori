@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductStocksTable extends Migration
+class CreateRawsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateProductStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_stocks', function (Blueprint $table) {
+        Schema::create('raws', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_product');
-            $table->integer('value');
-            $table->dateTime('product_date');
+            $table->bigInteger("raw_type_id");
+            $table->string("name");
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateProductStocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_stocks');
+        Schema::dropIfExists('raws');
     }
 }

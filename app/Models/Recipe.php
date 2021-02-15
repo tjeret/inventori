@@ -6,31 +6,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ProductStock
+ * Class Recipe
  * @package App\Models
- * @property integer product_id
- * @property integer debit
- * @property integer credit
- * @property string expired_at
+ * @property integer id
+ * @property string name
  * @property string created_at
  * @property string updated_at
  */
-class ProductStock extends Model
+class Recipe extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "created_at";
-    protected $keyType = "string";
-
+    protected $with = ['ingredient'];
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'product_id',
-        'debit',
-        'credit',
-        'expired_at',
+        'name',
     ];
+
+    public function ingredient()
+    {
+        return $this->belongsTo(Ingredient::class, 'recipe_id', 'id');
+    }
 }

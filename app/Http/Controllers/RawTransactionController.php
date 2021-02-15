@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Ingredient;
 use App\Models\Raw;
+use App\Models\RawStock;
+use App\Models\RawTransaction;
 use App\Models\RawType;
-use App\Models\Recipe;
-use App\Models\Supplier;
 use Illuminate\Http\Request;
 
-class ProductionController extends Controller
+class RawTransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,29 +17,7 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = Ingredient::with(['material', 'recipt'])->get();
-
-        // dd($data);
-        return view('admin.pages.production.index')->with([
-            'data' => $data
-        ]);
-    }
-
-    public function bahan()
-    {
-        $recipe = Recipe::all();
-        $bahan = Raw::all();
-        $suplier = Supplier::all();
-        $type = RawType::all();
-        $ingr = Ingredient::all();
-        // dd($ingr);
-        return view('admin.pages.production.bahan')->with([
-            'recipe' => $recipe,
-            'supplier' => $suplier,
-            'type' => $type,
-            'ingr' => $ingr,
-            'bahan' => $bahan
-        ]);
+        //
     }
 
     /**
@@ -62,7 +38,39 @@ class ProductionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'supplier_id' => 'required',
+            'price' => 'required',
+            'invoice' => 'required',
+        ]);
+        $transaction = new RawTransaction();
+        $transaction->supplier_id = $request->supplier_id;
+        $transaction->price = $request->price;
+        $transaction->invoice = $request->invoice;
+        $transaction->save();
+
+        $this->validate($request, [
+            'raw_type_id' => 'required',
+            'name' => 'required',
+        ]);
+        $raw = new Raw();
+        $raw->raw_type_id = $request->raw_type_id;
+        $raw->name = $request->name;
+        $raw->save();
+
+        $this->validate($request, [
+            'debit' => 'required',
+            'expired_at' => 'required',
+        ]);
+
+        $rawstock = new RawStock();
+        $rawstock->raw_id = $raw->id;
+        $rawstock->raw_transaction_id = $transaction->id;
+        $rawstock->debit = $request->debit;
+        $rawstock->expired_at = $request->expired_at;
+        $rawstock->save();
+
+        return redirect()->back()->with('message', "data telah berhasil di simpan");
     }
 
     /**

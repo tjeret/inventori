@@ -1,16 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Ingredient;
-use App\Models\Raw;
-use App\Models\RawType;
 use App\Models\Recipe;
-use App\Models\Supplier;
 use Illuminate\Http\Request;
 
-class ProductionController extends Controller
+class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,29 +14,7 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = Ingredient::with(['material', 'recipt'])->get();
-
-        // dd($data);
-        return view('admin.pages.production.index')->with([
-            'data' => $data
-        ]);
-    }
-
-    public function bahan()
-    {
-        $recipe = Recipe::all();
-        $bahan = Raw::all();
-        $suplier = Supplier::all();
-        $type = RawType::all();
-        $ingr = Ingredient::all();
-        // dd($ingr);
-        return view('admin.pages.production.bahan')->with([
-            'recipe' => $recipe,
-            'supplier' => $suplier,
-            'type' => $type,
-            'ingr' => $ingr,
-            'bahan' => $bahan
-        ]);
+        //
     }
 
     /**
@@ -62,16 +35,25 @@ class ProductionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:1',
+        ]);
+
+        $recipe = new Recipe();
+        $recipe->name = $request->name;
+        $recipe->save();
+
+        return redirect()->back()->with('message', "Resep telah berhasil disimpan");
     }
+
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Recipe  $Recipe
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Recipe $Recipe)
     {
         //
     }
@@ -79,10 +61,10 @@ class ProductionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Recipe  $Recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Recipe $Recipe)
     {
         //
     }
@@ -91,21 +73,29 @@ class ProductionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Recipe  $Recipe
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $Recipe = Recipe::find($id);
+        $Recipe->name = $request->name;
+        $Recipe->save();
+
+        return redirect()->back()->with('message', "Resep $request->name tela berhasil disimpan");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Recipe  $Recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Recipe $Recipe)
     {
         //
     }

@@ -8,9 +8,14 @@ use App\Http\Controllers\Pages\AccountingController;
 use App\Http\Controllers\Pages\FinanceController;
 use App\Http\Controllers\Pages\ProductionController;
 use App\Http\Controllers\Pages\SupervisorController;
-use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\Pages\WareHouseController;
-
+//
+use App\Http\Controllers\RawTransactionController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\RawTypeController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\TransactionMaterialController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -24,6 +29,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
     Route::patch('/profil', [ProfilController::class, 'update'])->name('profil.update');
+    Route::post('/tambah-bahan', [TransactionMaterialController::class, 'store'])->name('store');
+    Route::post('/tambah', [TransactionMaterialController::class, 'index'])->name('index');
+    Route::post('/supplier', [SupplierController::class, 'store'])->name('supplier');
+    Route::post('/rawtransaction', [RawTransactionController::class, 'store'])->name('rawtransaction');
+    Route::post('/type', [RawTypeController::class, 'store'])->name('type');
+    Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe');
+    Route::post('/ingridient', [IngredientController::class, 'store'])->name('ingridient');
+    Route::post('/cook', [IngredientController::class, 'cook'])->name('cook');
 
     //admin
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -53,7 +66,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', [ProductionController::class, 'index'])->name('index');
         Route::get('/add', [ProductionController::class, 'bahan'])->name('add');
         Route::get('/tambah', [ProductionController::class, 'create'])->name('create');
-        Route::post('/tambah', [IngredientController::class, 'store'])->name('store');
     });
 
     //warehouse
