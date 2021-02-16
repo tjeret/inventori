@@ -35,7 +35,19 @@ class ProductTrxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_product' => 'required|min:1',
+            'credit' => 'required|min:1',
+            'debit' => 'required',
+        ]);
+
+        $productTrx = new ProductTrx();
+        $productTrx->id_product = $request->id_product;
+        $productTrx->credit = $request->credit;
+        $productTrx->debit = $request->debit;
+        $productTrx->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil disimpan");
     }
 
     /**
@@ -67,9 +79,21 @@ class ProductTrxController extends Controller
      * @param  \App\Models\ProductTrx  $productTrx
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductTrx $productTrx)
+    public function update(Request $request, ProductTrx $productTrx, $id)
     {
-        //
+        $this->validate($request, [
+            'id_product' => 'required|min:1',
+            'credit' => 'required|min:1',
+            'debit' => 'required',
+        ]);
+
+        $productTrx = ProductTrx::find($id);
+        $productTrx->id_product = $request->id_product;
+        $productTrx->credit = $request->credit;
+        $productTrx->debit = $request->debit;
+        $productTrx->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil disimpan");
     }
 
     /**

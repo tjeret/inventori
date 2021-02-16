@@ -35,7 +35,19 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_purcasing' => 'required|min:1',
+            'id_material' => 'required|min:1',
+            'expired_date' => 'required'
+        ]);
+
+        $stock = new Stock();
+        $stock->id_purcasing = $request->id_purcasing;
+        $stock->id_material = $request->id_material;
+        $stock->expired_date = $request->expired_date;
+        $stock->save();
+
+        return redirect()->back()->with('message', "Stock $request->name tela berhasil disimpan");
     }
 
     /**
@@ -67,9 +79,21 @@ class StockController extends Controller
      * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Stock $stock)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'id_purcasing' => 'required|min:1',
+            'id_material' => 'required|min:1',
+            'expired_date' => 'required'
+        ]);
+
+        $stock = Stock::find($id);
+        $stock->id_purcasing = $request->id_purcasing;
+        $stock->id_material = $request->id_material;
+        $stock->expired_date = $request->expired_date;
+        $stock->save();
+
+        return redirect()->back()->with('message', "Stock $request->name telah berhasil di ubah");
     }
 
     /**
@@ -78,8 +102,11 @@ class StockController extends Controller
      * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Stock $stock)
+    public function destroy($id)
     {
-        //
+        $stock = Stock::find($id);
+        Stock::destroy($id);
+
+        return redirect()->back()->with('message', "Stock $stock->name telah berhasil di hapus");
     }
 }

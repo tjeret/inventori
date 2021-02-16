@@ -4,24 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
+ * Class Supplier
+ * @package App\Models
+ * @property integer id
+ * @property string owner
  * @property string name
- * @property string contact
  * @property string address
+ * @property string phone
  */
-
 class Supplier extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'name', 'contact', 'addres'
+        'owner',
+        'name',
+        'address',
+        'email',
+        'phone',
     ];
-
-    public function purcasing()
-    {
-        return $this->hasOne(Purcasing::class, 'id_supplier', 'id');
-    }
 }

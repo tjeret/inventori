@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer id_material
  * @property integer value
  */
-class ingredient extends Model
+class Ingredient extends Model
 {
     use HasFactory, SoftDeletes;
 

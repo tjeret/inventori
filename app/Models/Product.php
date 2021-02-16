@@ -4,51 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property integer id_price
- * @property integer id_variant
- * @property string name
- * @property integer label
+ * Class Product
+ * @package App\Models
+ * @property integer id
+ * @property string code
+ * @property string recipe_id
+ * @property string description
+ * @property string created_at
+ * @property string updated_at
  */
-
 class Product extends Model
 {
-    use HasFactory, SoftDeletes;
+  use HasFactory;
 
-<<<<<<< HEAD
-    protected $with = [
-        'price',
-        'variant',
-        'productstock'
-    ];
-=======
->>>>>>> main
-    protected $fillable = [
-        'id_price', 'id_variant', 'name', 'label'
-    ];
-
-    public function price()
-    {
-        return $this->belongsTo(Price::class, 'id_price', 'id');
-    }
-
-    public function variant()
-    {
-<<<<<<< HEAD
-        return $this->belongsTo(Variant::class, 'id_variant', 'id');
-=======
-        return $this->belongsTo(Variant::class, 'id_varian', 'id');
->>>>>>> main
-    }
-
-    public function productstock()
-    {
-<<<<<<< HEAD
-        return $this->hasOne(ProductStock::class, 'id');
-=======
-        return $this->hasOne(ProductStock::class,'id')
->>>>>>> main
-    }
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'code',
+    'recipe_id',
+    'description',
+  ];
 }
