@@ -35,7 +35,21 @@ class PurcasingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_supplier' => 'required|min:1',
+            'price' => 'required|min:1',
+            'purcase_invoice' => 'required|min:1',
+            'purcase_date' => 'required|min:1',
+        ]);
+
+        $purcasing = new Purcasing();
+        $purcasing->id_supplier = $request->id_supplier;
+        $purcasing->price = $request->price;
+        $purcasing->purcase_invoice = $request->purcase_invoice;
+        $purcasing->purcase_date = $request->purcase_date;
+        $purcasing->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil di ubah");
     }
 
     /**
@@ -67,9 +81,23 @@ class PurcasingController extends Controller
      * @param  \App\Models\Purcasing  $purcasing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purcasing $purcasing)
+    public function update(Request $request, Purcasing $purcasing, $id)
     {
-        //
+        $this->validate($request, [
+            'id_supplier' => 'required|min:1',
+            'price' => 'required|min:1',
+            'purcase_invoice' => 'required|min:1',
+            'purcase_date' => 'required|min:1',
+        ]);
+
+        $purcasing = Purcasing::find($id);
+        $purcasing->id_supplier = $request->id_supplier;
+        $purcasing->price = $request->price;
+        $purcasing->purcase_invoice = $request->purcase_invoice;
+        $purcasing->purcase_date = $request->purcase_date;
+        $purcasing->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil di ubah");
     }
 
     /**

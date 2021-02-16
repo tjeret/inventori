@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ProductStock
+ * Class RawStock
  * @package App\Models
- * @property integer product_id
- * @property integer debit
- * @property integer credit
+ * @property integer raw_id
+ * @property integer raw_transaction_id
+ * @property double debit
+ * @property double credit
  * @property string expired_at
  * @property string created_at
  * @property string updated_at
  */
-class ProductStock extends Model
+class RawStock extends Model
 {
     use HasFactory;
 
@@ -28,9 +29,20 @@ class ProductStock extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id',
+        'raw_id',
+        'raw_transaction_id',
         'debit',
         'credit',
         'expired_at',
     ];
+
+    public function raw()
+    {
+        return $this->hasOne(Raw::class, 'id');
+    }
+
+    public function rawtransaction()
+    {
+        return $this->hasOne(RawTransaction::class, 'id');
+    }
 }

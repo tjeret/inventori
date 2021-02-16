@@ -35,7 +35,19 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'owner' => 'required|string',
+            'address' => 'required|string',
+            'name' => 'required|string',
+        ]);
+
+        $supplier = new Supplier();
+        $supplier->owner = $request->owner;
+        $supplier->address = $request->address;
+        $supplier->name = $request->name;
+        $supplier->save();
+
+        return redirect()->back()->with('message', "Supplier $request->name telah berhasil di simpan");
     }
 
     /**
@@ -67,9 +79,21 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, Supplier $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'contact' => 'required|string|unique:contact',
+        ]);
+
+        $supplier = Supplier::find($id);
+        $supplier->name = $request->name;
+        $supplier->address = $request->address;
+        $supplier->contact = $request->contact;
+        $supplier->save();
+
+        return redirect()->back()->with('message', "Supplier $request->name telah berhasil di ubah");
     }
 
     /**
@@ -78,8 +102,11 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(Supplier $supplier, $id)
     {
-        //
+        $supplier = Supplier::find($id);
+        Supplier::destroy($id);
+
+        return redirect()->back()->with('message', "Supplier $supplier->name telah berhasil di hapus");
     }
 }

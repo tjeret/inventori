@@ -24,7 +24,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +34,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_price' => 'required|min:1',
+            'id_variant' => 'required|min:1',
+            'name' => 'required',
+            'label' => 'required'
+        ]);
+
+        $product = new Product();
+        $product->id_price = $request->id_price;
+        $product->id_variant = $request->id_variant;
+        $product->name = $request->name;
+        $product->label = $request->label;
+        $product->save();
+
+        return redirect()->back()->with('message', "product $request->name tela berhasil disimpan");
     }
 
     /**
@@ -67,9 +80,23 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product, $id)
     {
-        //
+        $this->validate($request, [
+            'id_price' => 'required|min:1',
+            'id_variant' => 'required|min:1',
+            'name' => 'required',
+            'label' => 'required'
+        ]);
+
+        $product = Product::find($id);
+        $product->id_price = $request->id_price;
+        $product->id_variant = $request->id_variant;
+        $product->name = $request->name;
+        $product->label = $request->label;
+        $product->save();
+
+        return redirect()->back()->with('message', "Product $request->name telah berhasil di ubah");
     }
 
     /**

@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Role
+ * Class RawType
  * @package App\Models
  * @property integer id
  * @property string name
  * @property string created_at
  * @property string updated_at
  */
-class Role extends Model
+class RawType extends Model
 {
   use HasFactory;
 

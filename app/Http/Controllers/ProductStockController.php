@@ -35,7 +35,19 @@ class ProductStockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_product' => 'required|min:1',
+            'value' => 'required|min:1',
+            'product_date' => 'required',
+        ]);
+
+        $stock = new ProductStock();
+        $stock->id_product = $request->id_product;
+        $stock->value = $request->value;
+        $stock->product_date = $request->product_date;
+        $stock->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil disimpan");
     }
 
     /**
@@ -67,9 +79,21 @@ class ProductStockController extends Controller
      * @param  \App\Models\ProductStock  $productStock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductStock $productStock)
+    public function update(Request $request, ProductStock $productStock, $id)
     {
-        //
+        $this->validate($request, [
+            'id_product' => 'required|min:1',
+            'value' => 'required|min:1',
+            'product_date' => 'required',
+        ]);
+
+        $stock = ProductStock::find($id);
+        $stock->id_product = $request->id_product;
+        $stock->value = $request->value;
+        $stock->product_date = $request->product_date;
+        $stock->save();
+
+        return redirect()->back()->with('message', "Data telah berhasil ubah");
     }
 
     /**

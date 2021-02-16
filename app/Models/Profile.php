@@ -6,16 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Role
+ * Class Profile
  * @package App\Models
- * @property integer id
- * @property string name
+ * @property integer user_id
+ * @property string address
+ * @property string phone
  * @property string created_at
  * @property string updated_at
  */
-class Role extends Model
+class Profile extends Model
 {
   use HasFactory;
+
+  protected $primaryKey = "user_id";
+  protected $keyType = "integer";
 
   /**
    * The attributes that are mass assignable.
@@ -23,6 +27,8 @@ class Role extends Model
    * @var array
    */
   protected $fillable = [
-    'name',
+    'user_id',
+    'address',
+    'phone',
   ];
 }

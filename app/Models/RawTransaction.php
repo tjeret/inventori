@@ -6,21 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ProductStock
+ * Class RawTransaction
  * @package App\Models
- * @property integer product_id
- * @property integer debit
- * @property integer credit
- * @property string expired_at
+ * @property integer id
+ * @property integer supplier_id
+ * @property integer price
+ * @property string invoice
  * @property string created_at
  * @property string updated_at
  */
-class ProductStock extends Model
+class RawTransaction extends Model
 {
     use HasFactory;
-
-    protected $primaryKey = "created_at";
-    protected $keyType = "string";
 
     /**
      * The attributes that are mass assignable.
@@ -28,9 +25,13 @@ class ProductStock extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id',
-        'debit',
-        'credit',
-        'expired_at',
+        'supplier_id',
+        'price',
+        'invoice',
     ];
+
+    public function rawstock()
+    {
+        return $this->hasOne(RawStock::class, 'id');
+    }
 }
