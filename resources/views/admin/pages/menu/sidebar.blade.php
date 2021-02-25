@@ -1,31 +1,37 @@
+{{-- Master Data / Administrator --}}
 @if (auth()->user()->role == 0)
-    <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+    <li class="nav-item has-treeview {{ request()->is(['dashboard/*', 'dashboard']) ? 'menu-open' : '' }}">
+        <a href="#" class="nav-link {{ request()->is(['dashboard/*', 'dashboard']) ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-                Administrator
+                Master Data
                 <i class="right fas fa-angle-left"></i>
             </p>
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Master Data</p>
+                    <p>User</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>
-                        Setup table
-                    </p>
+                    <p>Member</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Resep</p>
                 </a>
             </li>
         </ul>
     </li>
 @endif
 
+{{-- Supervisor --}}
 @if (auth()->user()->role == 1 || auth()->user()->role == 0)
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
@@ -52,6 +58,7 @@
     </li>
 @endif
 
+{{-- keuangan --}}
 @if (auth()->user()->role == 2 || auth()->user()->role == 0)
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
@@ -112,6 +119,7 @@
     </li>
 @endif
 
+{{-- Accounting --}}
 @if (auth()->user()->role == 3 || auth()->user()->role == 0)
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
@@ -168,6 +176,7 @@
     </li>
 @endif
 
+{{-- Gudang --}}
 @if (auth()->user()->role == 4 || auth()->user()->role == 0)
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
@@ -181,19 +190,19 @@
             <li class="nav-item ">
                 <a href="{{ route('warehouse.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Persediaan Bahan Baku</p>
+                    <p>Stock Bahan Baku</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Persediaan Barang Dagang</p>
+                    <p>Stock Produk</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Transaksi Bahan Expired</p>
+                    <p>Pembelian</p>
                 </a>
             </li>
             <li class="nav-item">
@@ -206,6 +215,7 @@
     </li>
 @endif
 
+{{-- Produksi --}}
 @if (auth()->user()->role == 5 || auth()->user()->role == 0)
     <li class="nav-item has-treeview {{ request()->is(['produksi/*', 'produksi']) ? 'menu-open' : '' }}">
         <a href="#" class="nav-link {{ request()->is(['produksi/*', 'produksi']) ? 'active' : '' }}">
@@ -220,13 +230,13 @@
                 <a href="{{ route('production.index') }}"
                     class="nav-link  {{ request()->is('produksi') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Transaksi Bahan Baku Produksi</p>
+                    <p>Pra-Produksi</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Persediaan Barang Produksi</p>
+                    <p>Proses Produksi</p>
                 </a>
             </li>
             <li class="nav-item">
@@ -239,6 +249,7 @@
     </li>
 @endif
 
+{{-- Penjualan & reseller --}}
 @if (auth()->user()->role == 6 || auth()->user()->role == 0)
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
@@ -252,13 +263,13 @@
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Persediaan Barang</p>
+                    <p>List Reseller</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>penjualan</p>
+                    <p>penjualan Reseller</p>
                 </a>
             </li>
         </ul>

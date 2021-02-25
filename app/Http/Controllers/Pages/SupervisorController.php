@@ -15,6 +15,7 @@ class SupervisorController extends Controller
     public function index()
     {
         //
+        return view('admin.pages.supervisor.index');
     }
 
     /**

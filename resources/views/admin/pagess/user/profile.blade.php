@@ -39,19 +39,19 @@
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Ini Adalah UserNama</h3>
+                <h3 class="profile-username text-center">Nina Mcintire</h3>
 
-                <p class="text-muted text-center">Nama Asli User</p>
+                <p class="text-muted text-center">Software Engineer</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Jabatan</b> <a class="float-right">Nama Jabatan</a>
+                    <b>Followers</b> <a class="float-right">1,322</a>
                   </li>
                   <li class="list-group-item">
-                    <b>NIK</b> <a class="float-right">5430202</a>
+                    <b>Following</b> <a class="float-right">543</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Cabang</b> <a class="float-right">Nama Cabang</a>
+                    <b>Friends</b> <a class="float-right">13,287</a>
                   </li>
                 </ul>
 
@@ -75,9 +75,9 @@
                   <div class="active tab-pane" id="settings">
                     <form class="form-horizontal">
                       <div class="form-group row">
-                        <label for="username" class="col-sm-2 col-form-label" disabled>username</label>
+                        <label for="inputName" class="col-sm-2 col-form-label" disabled>username</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="username" placeholder="Name" disabled>
+                          <input type="email" class="form-control" id="inputName" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -87,21 +87,21 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="name" placeholder="Name">
+                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="position" class="col-sm-2 col-form-label">Jabatan</label>
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Jabatan</label>
                         <div class="col-sm-10">
-                          <input class="form-control" id="position" placeholder="Experience"></input>
+                          <input class="form-control" id="inputExperience" placeholder="Experience"></input>
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="NIK" class="col-sm-2 col-form-label">NIK</label>
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="NIK" placeholder="Skills">
+                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -115,11 +115,16 @@
                       </div>
                     </form>
                   </div>
+                  <!-- /.tab-pane -->
                 </div>
-              </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
             </div>
+            <!-- /.nav-tabs-custom -->
           </div>
+          <!-- /.col -->
         </div>
-      </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
     </section>
 @endsection

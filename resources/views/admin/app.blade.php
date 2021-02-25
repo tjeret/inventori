@@ -58,7 +58,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-light-orange elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
                 <img src="{{ asset('vendor') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -80,11 +80,11 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2 sidebar-dark-warning">
+                <nav class="mt-2 sidebar-light-warning">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        @include('admin.pages.sidebar')
+                        @include('admin.pages.menu.sidebar')
 
                     </ul>
                 </nav>
@@ -109,10 +109,8 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.5
+            <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
             </div>
         </footer>
 

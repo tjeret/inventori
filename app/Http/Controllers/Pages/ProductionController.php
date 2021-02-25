@@ -19,10 +19,10 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = Ingredient::with(['material', 'recipt'])->get();
-
-        // dd($data);
-        return view('admin.pages.production.index')->with([
+        //$data = Ingredient::with(['material', 'recipt'])->get();
+        $data = [];
+        //dd($data);
+        return view('admin.pages.production.product')->with([
             'data' => $data
         ]);
     }
